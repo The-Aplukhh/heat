@@ -2,10 +2,15 @@ Hey team, we will need a better readme for sure.
 
 For now: 
 -run:
+
   -npm install
+  
   -sudo npm install -g electron
+  
   -npm start
+  
   -electron .
+  
 
 
 - [Updating to New Releases](#updating-to-new-releases)
