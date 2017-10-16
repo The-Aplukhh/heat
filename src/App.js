@@ -5,9 +5,6 @@ import './App.css';
 
 class App extends Component {
 
-  githubLogin() {
-    loginGithub()
-  }
 
 
   render() {
