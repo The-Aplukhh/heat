@@ -1,25 +1,26 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import { loginGithub } from "./githubOAuth.js";
 import './App.css';
+import Landing from './components/Landing'
+
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentRender: "Landing"
+    };
+  }
 
-
+  routing() {
+    if (this.state.currentRender === "Landing") {
+      return <Landing />;
+    }
+  }
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload. LOLOLOL
-        </p>
-        <button className="square" onClick={() => loginGithub()}>
-          Sign In
-        </button>
+      <div>
+      { this.routing() }
       </div>
     );
   }
