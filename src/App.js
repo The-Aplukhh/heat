@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from 'semantic-ui-react';
 import './App.css';
 import Landing from './components/Landing';
 import Morning from './components/dailypages/Morning';
@@ -10,6 +11,7 @@ class App extends Component {
     this.state = {
       currentRender: "Landing"
     };
+    this.setRender = this.setRender.bind(this);
   }
 
   routing() {
@@ -21,14 +23,18 @@ class App extends Component {
   }
 
   setRender(varible){
-    this.setState({currentRender : varible}, this.routing);
-    
+    this.setState({currentRender : varible});
   }
-
 
   render() {
     return (
       <div>
+      <Button 
+        className="primary"
+        labelPosition='left'
+        icon='left chevron'
+        content='Back'
+        onClick={() => this.setRender("Landing")} />
       { this.routing() }
       </div>
     );
