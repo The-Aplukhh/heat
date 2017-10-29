@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form } from 'semantic-ui-react'
+import { Button, Container, Form } from 'semantic-ui-react'
 
 const options = [
   { key: 'm', text: 'Male', value: 'male' },
@@ -14,8 +14,7 @@ class Morning extends Component {
   render() {
     const { value } = this.state
     return (
-     <div>
-        <h1>lolololol</h1>
+      <Container style={{ marginTop: '3em' }}>
         <Form>
             <Form.Group widths='equal'>
             <Form.Input label='First name' placeholder='First name' />
@@ -32,7 +31,7 @@ class Morning extends Component {
             <Form.Checkbox label='I agree to the Terms and Conditions' />
             <Form.Button>Submit</Form.Button>
         </Form>
-      </div>
+      </Container>
     )
   }
 }
