@@ -1,25 +1,41 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import { loginGithub } from "./githubOAuth.js";
+import { Button } from 'semantic-ui-react';
 import './App.css';
+import Landing from './components/Landing';
+import Morning from './components/dailypages/Morning';
+
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentRender: "Landing"
+    };
+    this.setRender = this.setRender.bind(this);
+  }
 
+  routing() {
+    if (this.state.currentRender === "Landing") {
+      return <Landing setRender={this.setRender.bind(this)} />;
+    } else if (this.state.currentRender === "Morning") {
+      return <Morning setRender={this.setRender.bind(this)} />;
+    }
+  }
 
+  setRender(varible){
+    this.setState({currentRender : varible});
+  }
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload. LOLOLOL
-        </p>
-        <button className="square" onClick={() => loginGithub()}>
-          Sign In
-        </button>
+      <div>
+      <Button 
+        className="primary"
+        labelPosition='left'
+        icon='left chevron'
+        content='Back'
+        onClick={() => this.setRender("Landing")} />
+      { this.routing() }
       </div>
     );
   }
