@@ -3,6 +3,8 @@ import { Button } from 'semantic-ui-react';
 import './App.css';
 import Landing from './components/Landing';
 import Morning from './components/dailypages/Morning';
+const BrowserWindow = window.require('electron').remote.BrowserWindow;
+
 
 
 class App extends Component {
@@ -26,6 +28,31 @@ class App extends Component {
     this.setState({currentRender : varible});
   }
 
+  login() {
+    var authWindow = new BrowserWindow({ width: 800, height: 600, show: false, 'node-integration': false });
+    var authUrl = 'http://127.0.0.1:8000/auth/github';
+    authWindow.loadURL(authUrl);
+    authWindow.show();
+
+    authWindow.webContents.on('did-get-redirect-request', function (event, oldUrl, newUrl) {
+      var raw_code = /code=([^&]*)/.exec(newUrl) || null,
+        code = (raw_code && raw_code.length > 1) ? raw_code[1] : null,
+        error = /\?error=(.+)$/.exec(newUrl);
+
+      if (code || error) {
+        // Close the browser if code found or error
+        console.log("code recieved: " + code);
+        
+        authWindow.close();
+      }
+    });
+    // Reset the authWindow on close
+    authWindow.on('close', function () {
+      authWindow = null;
+    }, false);
+    
+  }
+
   render() {
     return (
       <div>
@@ -35,7 +62,12 @@ class App extends Component {
         icon='left chevron'
         content='Back'
         onClick={() => this.setRender("Landing")} />
+      <Button
+       onClick={() => this.login()} >
+       Login
+      </Button>
       { this.routing() }
+      
       </div>
     );
   }
