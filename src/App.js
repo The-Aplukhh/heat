@@ -3,7 +3,11 @@ import { Button } from 'semantic-ui-react';
 import './App.css';
 import Landing from './components/Landing';
 import Morning from './components/dailypages/Morning';
+
 const BrowserWindow = window.require('electron').remote.BrowserWindow;
+
+
+import Noon from './components/dailypages/Noon';
 
 
 
@@ -21,6 +25,8 @@ class App extends Component {
       return <Landing setRender={this.setRender.bind(this)} />;
     } else if (this.state.currentRender === "Morning") {
       return <Morning setRender={this.setRender.bind(this)} />;
+    } else if (this.state.currentRender === "Noon") {
+      return <Noon setRender={this.setRender.bind(this)} />;
     }
   }
 
@@ -42,7 +48,7 @@ class App extends Component {
       if (code || error) {
         // Close the browser if code found or error
         console.log("code recieved: " + code);
-        
+
         authWindow.close();
       }
     });
@@ -50,13 +56,13 @@ class App extends Component {
     authWindow.on('close', function () {
       authWindow = null;
     }, false);
-    
+
   }
 
   render() {
     return (
       <div>
-      <Button 
+      <Button
         className="primary"
         labelPosition='left'
         icon='left chevron'
@@ -67,7 +73,7 @@ class App extends Component {
        Login
       </Button>
       { this.routing() }
-      
+
       </div>
     );
   }

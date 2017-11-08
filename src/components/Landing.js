@@ -12,7 +12,7 @@ class Landing extends Component {
     };
   }
 
- 
+
 
   render() {
     return (
@@ -28,7 +28,7 @@ class Landing extends Component {
           Morning
         </Button>
 
-        <Button className="primary" onClick={() => console.log("lol")}>
+        <Button className="primary" onClick={() => this.props.setRender("Noon")}>
           Noon
         </Button>
 
