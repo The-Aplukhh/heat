@@ -3,6 +3,7 @@ import { Button } from 'semantic-ui-react';
 import './App.css';
 import Landing from './components/Landing';
 import Morning from './components/dailypages/Morning';
+import Noon from './components/dailypages/Noon';
 
 
 class App extends Component {
@@ -19,6 +20,8 @@ class App extends Component {
       return <Landing setRender={this.setRender.bind(this)} />;
     } else if (this.state.currentRender === "Morning") {
       return <Morning setRender={this.setRender.bind(this)} />;
+    } else if (this.state.currentRender === "Noon") {
+      return <Noon setRender={this.setRender.bind(this)} />;
     }
   }
 
@@ -29,7 +32,7 @@ class App extends Component {
   render() {
     return (
       <div>
-      <Button 
+      <Button
         className="primary"
         labelPosition='left'
         icon='left chevron'
