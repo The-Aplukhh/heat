@@ -8,7 +8,7 @@ import Noon from './components/dailypages/Noon';
 const BrowserWindow = window.require('electron').remote.BrowserWindow;
 
 
-import Noon from './components/dailypages/Noon';
+
 
 
 
