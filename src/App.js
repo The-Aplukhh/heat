@@ -3,6 +3,7 @@ import { Button } from 'semantic-ui-react';
 import './App.css';
 import Landing from './components/Landing';
 import Morning from './components/dailypages/Morning';
+import Noon from './components/dailypages/Noon';
 
 const BrowserWindow = window.require('electron').remote.BrowserWindow;
 
